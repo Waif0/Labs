@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#define FUNCTION tan(arr[i]))*sqrt(arr[i])
+
+void ForOutput(int size, float* arr);
+void WhileOutput(int size, float* arr);
+void DowhileOutput(int size, float* arr);
+void ReadValues(int*, float*, float*);
+
+int main()
+{
+    
+    int size;
+    float start, end;
+    ReadValues(&size, &start, &end);
+    while ((size==1)||(start>end)||(start<0)) //писать условие вида каждый элемент массива ниже не делится без остатка на П/2 не хочу. 
+    {
+        printf("вы что-то сделали не так\n\n");
+        ReadValues(&size, &start, &end);
+    }
+    float* arr = (float*)malloc(size * sizeof(float));
+    for (int i = 0; i < size; ++i)
+        arr[i] = start+((end-start)/(size-1))*i;
+
+    printf("\n\n");
+    printf("f(x) = tg(x)*sqrt(x)\n");
+    
+    ForOutput(size, arr);
+    WhileOutput(size, arr);
+    DowhileOutput(size, arr);
+
+    free(arr);
+}
+
+void ForOutput(int size, float* arr)
+{
+    printf("for\nx\t| ");
+    for (int i = 0; i < size; ++i)
+        printf("%.5f\t| ", arr[i]);
+        
+    printf("\nf(x)\t| ");
+    for (int i = 0; i < size; ++i)
+        printf("%.5f\t| ", FUNCTION;
+    printf("\n\n");
+}
+
+void WhileOutput(int size, float* arr)
+{
+    int i=0;
+    printf("while\nx\t| ");
+    while (i<size)
+    {
+        printf("%.5f\t| ", arr[i]);
+        ++i;
+    }
+    i = 0;
+    printf("\nf(x)\t| ");
+    while (i<size)
+    {
+        printf("%.5f\t| ", FUNCTION;
+        ++i;
+    }
+    printf("\n\n");
+}
+
+void DowhileOutput(int size, float* arr)
+{
+    int i=0;
+    printf("doWhile\nx\t| ");
+    if (size!=0)
+    {
+        do
+        {
+            printf("%.5f\t| ", arr[i]);
+            ++i;
+        } while (i<size);
+        i = 0;
+        printf("\nf(x)\t| ");
+        do
+        {
+            printf("%.5f\t| ", FUNCTION;
+            ++i;
+        } while (i<size);
+    }
+    else
+    {
+        printf("\nf(x)\t| ");
+    }
+    printf("\n\n");
+}
+
+void ReadValues(int* size, float* start, float* end)
+{
+    printf("Введите количество значений\n");
+    scanf("%d", size);
+    printf("Введите начало отрезка\n");
+    scanf("%f", start);
+    printf("Введите конец отрезкай\n");
+    scanf("%f", end);
+}
