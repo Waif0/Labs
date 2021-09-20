@@ -10,7 +10,6 @@ void ReadValues(int*, float*, float*);
 
 int main()
 {
-    
     int size;
     float start, end;
     ReadValues(&size, &start, &end);
