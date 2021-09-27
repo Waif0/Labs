@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+void Problem1();
+void Problem2();
+
+int main()
+{
+    Problem2();
+}
+
+void Problem1()
+{
+    double e, si1=1, si=0.5, s=1.5, n=2;;
+    printf("enter accuracy\n");
+    scanf("%lf", &e);
+    
+    if (e<0)
+        e*=-1;
+        
+    for (int i=3; fabs(si-si1)>=e; ++i)
+    {
+        si1 = si; 
+        n*=i;       
+        si = 1/n;  
+        s+=si;      
+    }
+    printf("sum %.20g", s);
+}
+
+void Problem2()
+{
+    //левые прямоугольники
+    double a, b, c, e, s, si, si1, h, x;
+    printf("enter accuracy\n");
+    scanf("%lf", &e);
+    printf("enter start value\n");
+    scanf("%lf", &a);
+    printf("enter end value\n");
+    scanf("%lf", &b);
+    
+    if(e<0)
+        e*=-1;
+    if (a>b)
+    {
+        c = a;
+        a = b;
+        b = c;
+    }
+    
+    si1 = (b-a)*log(a);
+    si = si1/2+(b-a)/2*log(a+(b-a)/2);  //(b-a)/2*log(a)+(b-a)/2*log(a+(b-a)/2);
+        
+    for (int n=4; fabs(si-si1)>=e; n*=2)
+    {
+        si1 = si;
+        si = 0;
+        h = (b-a)/n;
+        for (int i=0; i<n; ++i)
+            si+=h*log(a+h*i);
+    }
+    printf("\nS =  %.20g", si);
+}
